@@ -4,9 +4,8 @@ import bcryptjs from 'bcrypt';
 interface SeedRecipe {
   name: string;
   description: string;
-  ingredients: string;
   instructions: string;
-  // category: ValidCategories;
+  // ingredients: string;
 }
 
 interface SeedUser {
@@ -23,10 +22,21 @@ interface SeedCategory {
   name: ValidCategories;
 }
 
+interface SeedIngredients {
+  name: string;
+  quantity: string;
+}
+
+interface RecipeImages {
+  url: string;
+}
+
 interface SeedData {
   users: SeedUser[];
   recipes: SeedRecipe[];
   categories: SeedCategory[];
+  ingredients: SeedIngredients[];
+  recipeimages: RecipeImages[];
 }
 
 type ValidCategories = 
@@ -104,22 +114,11 @@ export const initialData: SeedData = {
     {
       name: 'Pesto',
       description: 'Aprende a preparar esta receta de Salsa pesto, en elGourmet',
-      ingredients: 'Aceite de oliva - 1 Chorrito, Rúcula - 100 Gramos, Ajo - 1 Diente, Nuez - 60 Gramos, Albaca - 20 Gramos',
       instructions: 'Procesar hojas de rúcula, albahaca, nuez, queso rallado, ajo y aceite de oliva, agregar de a poco según se necesite',
     },
     {
       name: 'Ensalada de manzana',
       description: 'Aprende a preparar esta receta de Salsa pesto, en elGourmet',
-      ingredients: `Pasas 1/24 
-      Taza Jerez - 15 Mil
-      Manzana golden - 0.5 Unidades
-      Crema - Acida 41.666666666666664 Gramos
-      Azúcar - 0.16666666666666666 Cucharada
-      Leche condensada - 16.666666666666668 Gramos
-      Piña en almíbar en rodaja - 0.5 Unidades
-      Nuez pecana - 1/24 De 
-      Cerezas en almíbar - Cantidad Necesaria 
-      Pimienta -  Cantidad Necesaria`,
       instructions: `Macerar en el jerez las pasas, reservar. 
         Pelar y cortar en cubos medianos las manzanas. 
         Bañar con el almíbar de la piña las manzanas cortadas para evitar su oxidación y reservar. 
@@ -133,15 +132,6 @@ export const initialData: SeedData = {
     {
       name: 'Tamales de frijol negro con hoja santa y verduras fermentadas',
       description: 'Aprende a preparar esta receta de Tamales de frijol negro con hoja santa y verduras fermentadas, de la mano de Sonia Ortiz por elGourmet',
-      ingredients: `*Ingredientes para la masa*
-      Masa de nixtamal - 1 Kilo
-      Caldo de pollo - 1 Taza
-      Manteca de puerco - 1 Taza
-      Sal - Cantidad Necesaria
-      *Ingredientes para los tamales*
-      Hoja santa - 12 Unidades
-      Frijoles negros molidos - 2 Tazas
-      Chiles y verduras fermentados tipo escabeche`,
       instructions: `Para preparar la masa
         Coloca la masa en un tazón o batea y bate a mano, incorporando poco a poco el caldo de pollo tibio, la manteca de puerco y sal al gusto, hasta que la masa esponje.
         Para preparar las hojas de plátano
@@ -164,15 +154,6 @@ export const initialData: SeedData = {
     {
       name: 'Espinazo de Cerdo en Salsa Roja',
       description: 'Para completar tu menú de la semana, prepara este ESPINAZO de CERDO en SALSA ROJA hecho con CONSOMATE®. Puedes complementar con arroz y verduras al gusto.',
-      ingredients: `4 Jitomates cocidos
-      1 Diente de ajo cocido
-      1/4 De cebolla cocida
-      2 Chiles serranos cocidos
-      2 Tazas de agua
-      2 Cubos de Concentrado de Tomate con Pollo CONSOMATE®
-      1 Cucharada de aceite vegetal
-      400 g De espinazo de cerdo cocido y frito
-      2 Tazas de verdolagas cocidas y escurridas`,
       instructions: `1.  Licúa los jitomates, el ajo, la cebolla, los chiles, el agua y el Concentrado de Tomate con Pollo CONSOMATE®.
       2.  Calienta el aceite, vierte lo que licuaste y cocina hasta que espese ligeramente moviendo ocasionalmente.
       3.  Añade el espinazo, las verdolagas, cocina por 3 minutos más y ofrece.`,
@@ -180,15 +161,6 @@ export const initialData: SeedData = {
     {
       name: 'Ensalada a las finas hierbas',
       description: 'ENSALADA A LAS FINAS HIERBAS preparada con MAGGI® JUGOSO AL SARTÉN® CON FINAS HIERBAS',
-      ingredients: `1 Sobre con 4 Hojas con Sazonador MAGGI® JUGOSO AL SARTÉN® con Finas Hierbas
-      1 Pechuga de pollo cortada en 4 piezas a lo largo sin hueso y sin piel (150 g c/u)
-      2 Manzanas rojas cortadas en rebanadas
-      1 Lechuga romana cortada finamente
-      1/2 Taza de Arándanos deshidratados
-      1/2 Taza de Queso panela rallado
-      1/2 Lechuga orejona desinfectada y troceada
-      2 Tazas de Espinacas desinfectadas y cortadas finamente
-      1 Paquete de Galletas saladas (137 g)`,
       instructions: `1.  Abre una Hoja con Sazonador MAGGI® JUGOSO AL SARTÉN® con Finas Hierbas, coloca una pechuga, cierra y presiona ligeramente para impregnar las especias. Colócala en un sartén sin aceite, previamente precalentada a fuego bajo durante 1 minuto, tapa y cocina a fuego bajo de 7 a 8 minutos por cada lado o hasta que esté bien cocida. Retira la hoja y repite el procedimiento con el resto de las pechugas.
       Mezcla
       2.  Mezcla en un tazón las manzanas con la lechuga romana, los arándanos, el queso panela, la lechuga orejona y la espinaca.
@@ -198,15 +170,6 @@ export const initialData: SeedData = {
     {
       name: 'Ensalada botanera',
       description: 'ENSALADA BOTANERA preparada con JUGO MAGGI®',
-      ingredients: `4 Cucharadas de Jugo MAGGI®
-      4 Cucharadas de Salsa Tipo Inglesa CROSSE & BLACKWELL®
-      4 Limones (su jugo)
-      1/4 Taza de Cátsup
-      1/4 Taza de Salsa picante
-      1/2 Taza de Zanahorias ralladas
-      1 Pieza Pepino cortado en rebanadas
-      3 Salchichas de pavo cortadas en rebanadas
-      1/2 Paquete de Galletas SALADITAS® GAMESA®`,
       instructions: `1.  Mezcla el Jugo MAGGI® con la Salsa Tipo Inglesa CROSSE & BLACKWELL®, el jugo de limón, la salsa de cátsup, la zanahoria, el pepino y las rebanadas de salchicha.
       Refrigera
       2.  Refrigera por 10 minutos.
@@ -216,20 +179,6 @@ export const initialData: SeedData = {
     {
       name: 'Ensalada con aderezo de cacahuate',
       description: 'ENSALADA CON ADEREZO DE CACAHUATE preparada con MEDIA CREMA NESTLÉ',
-      ingredients: `1 Lata de Media Crema NESTLÉ
-      3/4 de Taza de Cacahuate sin sal
-      1 Cucharadita de Sal con ajo en polvo
-      1 Cucharada de Salsa de Soya MAGGI
-      1/4 de Taza de Agua
-      1 Sobre de Hojas con Sazonador MAGGI JUGOSO AL SARTÉN con Finas Hierbas
-      1 Pechuga de pollo cortada en 4 piezas a lo largo, sin hueso y sin piel (150 g c/u)
-      1 Cucharada de Aceite de maíz
-      1 Pimiento morrón rojo sin semillas y cortado en tiras
-      1/2 Pimiento morrón amarillo sin semillas y cortado en tiras
-      1 Cucharadita de Sal con ajo en polvo
-      1 Lechuga sangría desinfectada y troceada
-      1 Lechuga italiana desinfectada y troceada
-      3/4 de Taza de Jitomates cherry cortados por la mitad`,
       instructions: `1.  Para el aderezo, licúa la Media Crema NESTLÉ con los cacahuates, la sal con ajo, la Salsa de Soya MAGGI y el agua.
       Cocina
       2.  Abre una Hoja con Sazonador MAGGI JUGOSO AL SARTÉN con Finas Hierbas, coloca una pechuga, cierra y presiona ligeramente para impregnar las especias. Colócala en una sartén sin aceite, previamente precalentada a fuego bajo durante 1 minuto, tapa y cocina a fuego bajo de 7 a 8 minutos por cada lado o hasta que esté cocida y corta en cubos. Retira la hoja y repite el procedimiento con el resto de las pechugas.
@@ -239,11 +188,6 @@ export const initialData: SeedData = {
     {
       name: 'Espagueti en Salsa de Quesos Fácil',
       description: 'Prepara este ESPAGUETI en SALSA de QUESOS con sólo 5 ingredientes. El secreto es la CREMOSIDAD de CARNATION® CLAVEL® y el sazón de los quesos',
-      ingredients: `1 Envase de Leche Evaporada CARNATION® CLAVEL® (360 g)
-      1/2 Taza de queso tipo manchego rallado
-      1/4 De taza de queso parmesano rallado
-      1/2 Paquete de queso crema
-      1 Paquete de espagueti cocido y escurrido (200 g)`,
       instructions: `
       1.  Licúa la Leche Evaporada CARNATION® CLAVEL®, los quesos y el consomé de pollo.
       Cocina
@@ -254,13 +198,6 @@ export const initialData: SeedData = {
     {
       name: 'Sopa de Coditos con Salchicha',
       description: 'Prepara una PASTA de CODITO fácil con SALCHICHAS sazonando con MEDIA CREMA NESTLÉ®, CHIPOTLE y sal. Práctica y económica para el día a día',
-      ingredients: `1 Lata de Media Crema NESTLÉ®
-      1 Cucharada de chile chipotle molido
-      1/3 De taza de mayonesa
-      1/4 De cucharadita de sal
-      4 Salchichas cortadas en rodajas
-      1 Paquete pasta tipo codito cocida y escurrida (200 g)
-      3 Ramas de cilantro desinfectado y picado finamente`,
       instructions: `1.  Mezcla la Media Crema NESTLÉ® con el chile chipotle, la mayonesa, la sal, las rodajas de salchicha y los coditos cocidos.
       Un toque verde
       2.  Añade el cilantro hasta integrar por completo.
@@ -270,21 +207,388 @@ export const initialData: SeedData = {
     {
       name: 'Pasta Estilo Carbonara',
       description: 'Prepara una versión de ESPAGUETI a la CARBONARA hecha con CARNATION® CLAVEL®, huevo y queso parmesano. El tocino no puede faltan en esta receta',
-      ingredients: `1 Cucharada de mantequilla
-      2 Cucharadas de aceite de oliva
-      200 Gramos de tocino picado finamente
-      200 Gramos de espagueti cocido y escurrido
-      1 Lata de Leche Evaporada CARNATION® CLAVEL®
-      2 Yemas de huevo
-      1 Huevo
-      1 Cucharadita de sal con cebolla en polvo
-      1/2 Cucharadita de pimienta negra molida
-      1/2 Taza de queso parmesano rallado
-      3 Ramas de perejil desinfectado y picado finamente`,
       instructions: `1.  Calienta la mantequilla con el aceite y cocina el tocino hasta que dore ligeramente. Agrega el espagueti, mezcla y baja el fuego.
       2.  Bate la Leche Evaporada CARNATION® CLAVEL®, las yemas, el huevo, la sal con cebolla, la pimienta y el queso parmesano; vierte sobre la preparación de tocino con el espagueti; mezcla y cocina por 3 minutos moviendo ocasionalmente.
       3.  Sirve, decora con el perejil y ofrece.`,
     },
   ],
+  ingredients: [
+    {
+      name: 'Aceite de oliva',
+      quantity: '1 Chorrito'
+    },
+    {
+      name: 'Rúcula',
+      quantity: '100 Gramos'
+    },
+    {
+      name: 'Ajo',
+      quantity: '1 Diente'
+    },
+    {
+      name: 'Nuez',
+      quantity: '60 Gramos'
+    },
+    {
+      name: 'Albaca',
+      quantity: '20 Gramos'
+    },
+    {
+      name: 'Pasas',
+      quantity: '1/24'
+    },
+    {
+      name: 'Taza Jerez',
+      quantity: '15 Mil'
+    },
+    {
+      name: 'Manzana golden',
+      quantity: '0.5 Unidades'
+    },
+    {
+      name: 'Crema',
+      quantity: 'Acida 41.666666666666664 Gramos'
+    },
+    {
+      name: 'Azúcar',
+      quantity: '0.16666666666666666 Cucharada'
+    },
+    {
+      name: 'Leche condensada',
+      quantity: '16.666666666666668 Gramos'
+    },
+    {
+      name: 'Piña en almíbar en rodaja',
+      quantity: '0.5 Unidades'
+    },
+    {
+      name: 'Nuez pecana',
+      quantity: '1/24 De '
+    },
+    {
+      name: 'Cerezas en almíbar',
+      quantity: 'Cantidad Necesaria '
+    },
+    {
+      name: 'Pimienta',
+      quantity: ' Cantidad Necesaria'
+    },
+    {
+      name: 'Masa de nixtamal',
+      quantity: '1 Kilo'
+    },
+    {
+      name: 'Caldo de pollo',
+      quantity: '1 Taza'
+    },
+    {
+      name: 'Manteca de puerco',
+      quantity: '1 Taza'
+    },
+    {
+      name: 'Sal',
+      quantity: 'Cantidad Necesaria'
+    },
+    {
+      name: 'Hoja santa',
+      quantity: '12 Unidades'
+    },
+    {
+      name: 'Frijoles negros molidos',
+      quantity: '2 Tazas'
+    },
+    {
+      name: 'Chiles y verduras fermentados ',
+      quantity: 'tipo escabeche'
+    },
+    {
+      name: 'Jitomates cocidos',
+      quantity: '4'
+    },
+    {
+      name: 'Diente de ajo cocido',
+      quantity: '1'
+    },
+    {
+      name: 'De cebolla cocida',
+      quantity: '1/4'
+    },
+    {
+      name: 'Chiles serranos cocidos',
+      quantity: '2'
+    },
+    {
+      name: 'Tazas de agua',
+      quantity: '2'
+    },
+    {
+      name: 'Cubos de Concentrado de Tomate con Pollo CONSOMATE®',
+      quantity: '2'
+    },
+    {
+      name: 'Cucharada de aceite vegetal',
+      quantity: '1'
+    },
+    {
+      name: 'De espinazo de cerdo cocido y frito',
+      quantity: '400 g'
+    },
+    {
+      name: 'Tazas de verdolagas cocidas y escurridas',
+      quantity: '2'
+    },
+    {
+      name: 'Sobre con 4 Hojas con Sazonador MAGGI® JUGOSO AL SARTÉN® con Finas Hierbas',
+      quantity: '1'
+    },
+    {
+      name: 'Pechuga de pollo cortada en 4 piezas a lo largo sin hueso y sin piel (150 g c/u)',
+      quantity: '1'
+    },
+    {
+      name: 'Manzanas rojas cortadas en rebanadas',
+      quantity: '2'
+    },
+    {
+      name: 'Lechuga romana cortada finamente',
+      quantity: '1'
+    },
+    {
+      name: 'Tazas de Espinacas desinfectadas y cortadas finamente',
+      quantity: '2'
+    },
+    {
+      name: 'Paquete de Galletas saladas (137 g)',
+      quantity: '1'
+    },
+    {
+      name: 'Taza de Arándanos deshidratados',
+      quantity: '1/2'
+    },
+    {
+      name: 'Taza de Queso panela rallado',
+      quantity: '1/2'
+    },
+    {
+      name: 'Lechuga orejona desinfectada y troceada',
+      quantity: '1/2'
+    },
+    {
+      name: 'Cucharadas de Jugo MAGGI®',
+      quantity: '4'
+    },
+    {
+      name: 'Cucharadas de Salsa Tipo Inglesa CROSSE & BLACKWELL®',
+      quantity: '4'
+    },
+    {
+      name: 'Limones (su jugo)',
+      quantity: '4'
+    },
+    {
+      name: 'Pieza Pepino cortado en rebanadas',
+      quantity: '1'
+    },
+    {
+      name: 'Salchichas de pavo cortadas en rebanadas',
+      quantity: '3'
+    },
+    {
+      name: 'Taza de Cátsup',
+      quantity: '1/4'
+    },
+    {
+      name: 'Taza de Salsa picante',
+      quantity: '1/4'
+    },
+    {
+      name: 'Taza de Zanahorias ralladas',
+      quantity: '1/2'
+    },
+    {
+      name: 'Paquete de Galletas SALADITAS® GAMESA®',
+      quantity: '1/2'
+    },
+    {
+      name: 'Lata de Media Crema NESTLÉ',
+      quantity: '1'
+    },
+    {
+      name: 'Cucharadita de Sal con ajo en polvo',
+      quantity: '1'
+    },
+    {
+      name: 'Cucharada de Salsa de Soya MAGGI',
+      quantity: '1'
+    },
+    {
+      name: 'Sobre de Hojas con Sazonador MAGGI JUGOSO AL SARTÉN con Finas Hierbas',
+      quantity: '1'
+    },
+    {
+      name: 'Pechuga de pollo cortada en 4 piezas a lo largo, sin hueso y sin piel (150 g c/u)',
+      quantity: '1'
+    },
+    {
+      name: 'Cucharada de Aceite de maíz',
+      quantity: '1'
+    },
+    {
+      name: 'Pimiento morrón rojo sin semillas y cortado en tiras',
+      quantity: '1'
+    },
+    {
+      name: 'Cucharadita de Sal con ajo en polvo',
+      quantity: '1'
+    },
+    {
+      name: 'Lechuga sangría desinfectada y troceada',
+      quantity: '1'
+    },
+    {
+      name: 'Lechuga italiana desinfectada y troceada',
+      quantity: '1'
+    },
+    {
+      name: 'de Taza de Agua',
+      quantity: '1/4'
+    },
+    {
+      name: 'Pimiento morrón amarillo sin semillas y cortado en tiras',
+      quantity: '1/2'
+    },
+    {
+      name: 'de Taza de Cacahuate sin sal',
+      quantity: '3/4'
+    },
+    {
+      name: 'de Taza de Jitomates cherry cortados por la mitad',
+      quantity: '3/4'
+    },
+    {
+      name: 'Envase de Leche Evaporada CARNATION® CLAVEL® (360 g)',
+      quantity: '1/2'
+    },
+    {
+      name: 'Paquete de espagueti cocido y escurrido (200 g)',
+      quantity: '1/4'
+    },
+    {
+      name: 'Taza de queso tipo manchego rallado',
+      quantity: '1/2'
+    },
+    {
+      name: 'De taza de queso parmesano rallado',
+      quantity: '1'
+    },
+    {
+      name: 'Paquete de queso crema',
+      quantity: '1'
+    },
+    {
+      name: 'Lata de Media Crema NESTLÉ®',
+      quantity: '1'
+    },
+    {
+      name: 'Cucharada de chile chipotle molido',
+      quantity: '1'
+    },
+    {
+      name: 'Salchichas cortadas en rodajas',
+      quantity: '4'
+    },
+    {
+      name: 'Paquete pasta tipo codito cocida y escurrida (200 g)',
+      quantity: '1'
+    },
+    {
+      name: 'Ramas de cilantro desinfectado y picado finamente',
+      quantity: '3'
+    },
+    {
+      name: 'De taza de mayonesa',
+      quantity: '1/3'
+    },
+    {
+      name: 'De cucharadita de sal',
+      quantity: '1/4'
+    },
+    {
+      name: 'Cucharada de mantequilla',
+      quantity: '1'
+    },
+    {
+      name: 'Cucharadas de aceite de oliva',
+      quantity: '2'
+    },
+    {
+      name: 'Lata de Leche Evaporada CARNATION® CLAVEL®',
+      quantity: '1'
+    },
+    {
+      name: 'Yemas de huevo',
+      quantity: '2'
+    },
+    {
+      name: 'Huevo',
+      quantity: '1'
+    },
+    {
+      name: 'Cucharadita de sal con cebolla en polvo',
+      quantity: '1'
+    },
+    {
+      name: 'Ramas de perejil desinfectado y picado finamente',
+      quantity: '3'
+    },
+    {
+      name: 'Cucharadita de pimienta negra molida',
+      quantity: '1/2'
+    },
+    {
+      name: 'Taza de queso parmesano rallado',
+      quantity: '1/2'
+    },
+    {
+      name: 'Gramos de tocino picado finamente',
+      quantity: '200'
+    },
+    {
+      name: 'Gramos de espagueti cocido y escurrido',
+      quantity: '200'
+    },
+  ],
+  recipeimages: [
+    {
+      url: 'pesto'
+    },
+    {
+      url: 'ensalada de manzana'
+    },
+    {
+      url: 'tamales de frijol negro con hoja santa y verduras fermentadas'
+    },
+    {
+      url: 'espinazo de cerdo en salsa roja'
+    },
+    {
+      url: 'ensalada a las finas hierbas'
+    },
+    {
+      url: 'ensalada botanera'
+    },
+    {
+      url: 'ensalada con aderezo de cacahuate'
+    },
+    {
+      url: 'espagueti en salsa de quesos fácil'
+    },
+    {
+      url: 'sopa de coditos con salchicha'
+    },
+    {
+      url: 'pasta estilo carbonara'
+    },
+  ]
 };
 
