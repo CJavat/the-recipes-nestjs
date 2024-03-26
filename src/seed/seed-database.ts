@@ -44,8 +44,17 @@ async function main() {
   }) });
 
   await prisma.recipeImage.createMany({ data: recipeimages.map( (image, index) => {
-
-    //TODO: ES PARECIDO AL DE LOS INGREDIENTES.
+    if( index === 0 ) return { recipeId: rec[0].id, ...image }
+    if( index === 0 ) return { recipeId: rec[1].id, ...image }
+    if( index === 0 ) return { recipeId: rec[2].id, ...image }
+    if( index === 0 ) return { recipeId: rec[3].id, ...image }
+    if( index === 0 ) return { recipeId: rec[4].id, ...image }
+    if( index === 0 ) return { recipeId: rec[5].id, ...image }
+    if( index === 0 ) return { recipeId: rec[6].id, ...image }
+    if( index === 0 ) return { recipeId: rec[7].id, ...image }
+    if( index === 0 ) return { recipeId: rec[8].id, ...image }
+    
+    return { recipeId: rec[9].id, ...image } 
   })});
 }
 

@@ -17,7 +17,16 @@ npm install
 ```
 docker compose up -d
 ```
-5. Arrancar el proyecto en modo desarrollo: 
+5. Migrar Schema de Prisma y Generarlo:
+```
+npx prisma migrate dev --name ALGUN_NOMBRE && npx prisma generate
+```
+6. Correr el SEED: `npm run seed`.
+7. Arrancar el proyecto en modo desarrollo: 
 ```
 npm run dev
 ```
+
+
+#### SNIPPETS
+![alt text](image.png)

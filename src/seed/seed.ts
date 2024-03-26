@@ -1,4 +1,3 @@
-// Datos de la semilla
 import bcryptjs from 'bcrypt';
 
 interface SeedRecipe {
@@ -28,7 +27,7 @@ interface SeedIngredients {
 }
 
 interface RecipeImages {
-  url: string;
+  uri: string;
 }
 
 interface SeedData {
@@ -78,7 +77,7 @@ export const initialData: SeedData = {
       lastName: 'Plascencia',
       email: 'cdpm98@hotmail.com',
       emailVerified: true,
-      password: '123123',
+      password: bcryptjs.hashSync('123123', 11),
       role: 'admin',
       image: 'profile_1'
     },
@@ -87,7 +86,7 @@ export const initialData: SeedData = {
       lastName: 'Mercado',
       email: 'caxlsh@hotmail.com',
       emailVerified: true,
-      password: '123123',
+      password: bcryptjs.hashSync('123123', 11),
       role: 'user',
       image: 'profile_2'
     },
@@ -96,7 +95,7 @@ export const initialData: SeedData = {
       lastName: 'Plascencia',
       email: 'carmegamanx5@hotmail.com',
       emailVerified: true,
-      password: '123123',
+      password: bcryptjs.hashSync('123123', 11),
       role: 'user',
       image: 'profile_3'
     },
@@ -105,7 +104,7 @@ export const initialData: SeedData = {
       lastName: 'Plascencia',
       email: 'carmegamanx5@gmail.com',
       emailVerified: true,
-      password: '123123',
+      password: bcryptjs.hashSync('123123', 11),
       role: 'user',
       image: 'profile_4'
     },
@@ -560,34 +559,34 @@ export const initialData: SeedData = {
   ],
   recipeimages: [
     {
-      url: 'pesto'
+      uri: 'pesto'
     },
     {
-      url: 'ensalada de manzana'
+      uri: 'ensalada de manzana'
     },
     {
-      url: 'tamales de frijol negro con hoja santa y verduras fermentadas'
+      uri: 'tamales de frijol negro con hoja santa y verduras fermentadas'
     },
     {
-      url: 'espinazo de cerdo en salsa roja'
+      uri: 'espinazo de cerdo en salsa roja'
     },
     {
-      url: 'ensalada a las finas hierbas'
+      uri: 'ensalada a las finas hierbas'
     },
     {
-      url: 'ensalada botanera'
+      uri: 'ensalada botanera'
     },
     {
-      url: 'ensalada con aderezo de cacahuate'
+      uri: 'ensalada con aderezo de cacahuate'
     },
     {
-      url: 'espagueti en salsa de quesos fácil'
+      uri: 'espagueti en salsa de quesos fácil'
     },
     {
-      url: 'sopa de coditos con salchicha'
+      uri: 'sopa de coditos con salchicha'
     },
     {
-      url: 'pasta estilo carbonara'
+      uri: 'pasta estilo carbonara'
     },
   ]
 };
