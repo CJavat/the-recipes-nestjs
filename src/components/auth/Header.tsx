@@ -2,7 +2,7 @@
 
 import { useThemeStore } from "@/store/theme/useThemeStore";
 import { useEffect, useState } from "react";
-import { IoMoonOutline, IoSunnyOutline  } from "react-icons/io5";
+import { IoMoonOutline, IoMoonSharp, IoSunnyOutline, IoSunnySharp  } from "react-icons/io5";
 
 export const Header = () => {
 
@@ -10,6 +10,7 @@ export const Header = () => {
   const changeTheme = useThemeStore( state => state.changeTheme );
 
   const [theme, setTheme] = useState<'light'|'dark'>();
+  const [isHover, setisHover] = useState( false )
 
   useEffect(() => {
     setTheme( colorTheme );
@@ -29,11 +30,21 @@ export const Header = () => {
 
   return (
     <header className="bg-white dark:bg-black absolute top-0 w-full px-10 py-3 border-b-2 dark:border-b-gray-700 flex justify-end items-center">
-      {
-        theme === 'dark'?
-        <IoSunnyOutline className="text-3xl cursor-pointer" onClick={ onChangeTheme } /> :
-        <IoMoonOutline className="text-3xl cursor-pointer" onClick={ onChangeTheme } />
-      }
+      <div onMouseEnter={ () => setisHover( true ) } onMouseLeave={ () => setisHover( false ) }>
+        {
+          theme === 'dark'
+            ? (
+              isHover 
+                ? <IoSunnySharp className="text-3xl cursor-pointer" onClick={ onChangeTheme } />
+                : <IoSunnyOutline className="text-3xl cursor-pointer" onClick={ onChangeTheme } />
+            )
+            : (
+              isHover
+                ? <IoMoonSharp className="text-3xl cursor-pointer" onClick={ onChangeTheme } />
+                : <IoMoonOutline className="text-3xl cursor-pointer" onClick={ onChangeTheme } />
+            )
+        }
+      </div>
     </header>
   )
 }
