@@ -1,9 +1,38 @@
+"use client";
+
 import Link from "next/link"
 import { IoArrowForwardOutline, IoLockOpenOutline, IoPersonAddOutline  } from "react-icons/io5"
+import { useForm } from "react-hook-form"
+import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
+
+interface InputsForm {
+  email: string;
+  password: string;
+}
 
 export const LoginForm = () => {
+  //TODO: FALTA TERMINARLO
+  const router = useRouter();
+  const { register, handleSubmit, watch, formState: { errors } } = useForm<InputsForm>();
+
+  const onSubmit = async ( data: InputsForm ) => {
+    console.log( data );
+
+    const res = await signIn('credentials', {
+      email: data.email,
+      password: data.password,
+    });
+
+    if( res?.error ) {
+      return alert( res.error );
+    }
+
+    router.push('/');
+  };
+
   return (
-    <div className="bg-zinc-50 dark:bg-zinc-950 shadow w-full rounded-lg divide-y divide-gray-200 dark:divide-gray-950">
+    <form className="bg-zinc-50 dark:bg-zinc-950 shadow w-full rounded-lg divide-y divide-gray-200 dark:divide-gray-950" onSubmit={ handleSubmit( onSubmit ) }>
       <div className="px-5 py-7 text-black dark:text-white">
         <label className="font-semibold text-sm pb-1 block">Correo</label>
         <input type="text" className="dark:bg-black border rounded-lg dark:border-zinc-800 px-3 py-2 mt-1 mb-5 text-sm w-full focus:border-indigo-500 focus:outline-none" />
@@ -36,6 +65,6 @@ export const LoginForm = () => {
           </Link>
         </div>
       </div>
-    </div>
+    </form>
   )
 }
